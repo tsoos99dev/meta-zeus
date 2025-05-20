@@ -23,3 +23,9 @@ IMAGE_INSTALL = " \
 
 IMAGE_INSTALL:append:update = " packagegroup-update"
 
+ROOTFS_POSTPROCESS_COMMAND += "modify_default_bashrc"
+
+modify_default_bashrc () {
+    mkdir -p ${IMAGE_ROOTFS}/home/admin 
+    echo "export PATH=\$PATH:/usr/local/sbin" >> ${IMAGE_ROOTFS}/home/admin/.bashrc
+}
