@@ -1,0 +1,11 @@
+[Unit]
+Description="Trigger SSH host certificate renewal every week"
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=24h
+OnCalendar=weekly
+Unit=host-cert-renewal.service
+
+[Install]
+WantedBy=multi-user.target

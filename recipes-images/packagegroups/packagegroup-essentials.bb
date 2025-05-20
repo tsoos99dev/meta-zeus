@@ -15,4 +15,5 @@ RDEPENDS:${PN} += " \
 	wget \
 	iproute2 \
 	step-cli \
+	host-cert-renewal \
 "
