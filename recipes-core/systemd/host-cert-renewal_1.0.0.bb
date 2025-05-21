@@ -4,7 +4,7 @@ SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_SERVICE:${PN} = "host-cert-renewa.service host-cert-renewal.timer"
 
 SRC_URI:append = " \
-    file://root_ca.crt
+    file://root_ca.crt \
     file://host-cert-renewal.sh \
     file://host-cert-renewal.service \
     file://host-cert-renewal.timer \
@@ -18,12 +18,12 @@ FILES:${PN} += " \
 "
 
 do_install:append() {
-  install -d ${D}/${sysconfdir}/step/certs
-  install -m 0644 ${D}${sysconfdir}/step/certs/root_ca.crt
+  install -d ${D}${sysconfdir}/step/certs
+  install -m 0644 ${WORKDIR}/root_ca.crt ${D}${sysconfdir}/step/certs/root_ca.crt
 
-  install -d ${D}/${systemd_unitdir}/system
-  install -m 0644 ${WORKDIR}/host-cert-renewal.service ${D}/${systemd_unitdir}/system
-  install -m 0644 ${WORKDIR}/host-cert-renewal.timer ${D}/${systemd_unitdir}/system
+  install -d ${D}${systemd_unitdir}/system
+  install -m 0644 ${WORKDIR}/host-cert-renewal.service ${D}${systemd_unitdir}/system
+  install -m 0644 ${WORKDIR}/host-cert-renewal.timer ${D}${systemd_unitdir}/system
 
   install -d ${D}/usr/local/bin
   install -m 0644 ${WORKDIR}/host-cert-renewal.sh ${D}/usr/local/bin
