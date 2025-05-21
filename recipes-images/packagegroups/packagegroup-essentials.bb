@@ -13,7 +13,6 @@ RDEPENDS:${PN} += " \
 	rsync \
 	htop \
 	wget \
-	iproute2 \
 	step-cli \
 	host-cert-renewal \
 "
