@@ -29,3 +29,5 @@ do_install:append() {
   install -d ${D}/usr/local/bin
   install -m 0744 ${WORKDIR}/host-cert-renewal.sh ${D}/usr/local/bin
 }
+
+RDEPENDS:${PN} += "bash"
