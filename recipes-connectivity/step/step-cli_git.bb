@@ -16,6 +16,7 @@
 # licenses then you should change the value to separate the licenses with |
 # instead of &. If there is any doubt, check the accompanying documentation
 # to determine which situation is applicable.
+
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://src/${GO_IMPORT}/LICENSE;md5=fb063f5a63b0a7dc7ef04f8bf6949c9f \
                     file://src/${GO_IMPORT}/debian/copyright;md5=33a7a7723ac76bca54bdaaa6f8cd04d1 \
@@ -45,5 +46,4 @@ SRCREV_FORMAT = "${BPN}"
 
 RDEPENDS:${PN}-dev += "bash"
 
-inherit go-vendor
-
+inherit go-zvendor
