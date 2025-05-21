@@ -1,7 +1,8 @@
 LICENSE = "CLOSED"
 
-SYSTEMD_AUTO_ENABLE = "enable"
-SYSTEMD_SERVICE:${PN} = "host-cert-renewa.service host-cert-renewal.timer"
+inherit systemd 
+
+SYSTEMD_SERVICE:${PN} = "host-cert-renewal.timer"
 
 SRC_URI:append = " \
     file://root_ca.crt \
@@ -26,5 +27,5 @@ do_install:append() {
   install -m 0644 ${WORKDIR}/host-cert-renewal.timer ${D}${systemd_unitdir}/system
 
   install -d ${D}/usr/local/bin
-  install -m 0644 ${WORKDIR}/host-cert-renewal.sh ${D}/usr/local/bin
+  install -m 0744 ${WORKDIR}/host-cert-renewal.sh ${D}/usr/local/bin
 }
