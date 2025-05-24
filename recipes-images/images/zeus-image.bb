@@ -23,20 +23,7 @@ IMAGE_INSTALL = " \
 
 IMAGE_INSTALL:append:update = " packagegroup-update"
 
-RUST = "rust-cross-canadian-${TRANSLATED_TARGET_ARCH}"
 SDK_TOOLCHAIN_LANGS += 'rust'
-TOOLCHAIN_HOST_TASK:append = " \
-	${@all_multilib_tune_values(d, 'RUST')} \
-	nativesdk-binutils \
-	nativesdk-gcc \
-	nativesdk-glibc-dev \
-	nativesdk-libgcc-dev \
-	nativesdk-rust \
-	nativesdk-cargo \
-	nativesdk-rust-tools-clippy \
-	nativesdk-rust-tools-rustfmt \
-"
+TOOLCHAIN_HOST_TASK:append = " packagegroup-rust-cross-canadian-${MACHINE}"
+TOOLCHAIN_TARGET_TASK:append = " libstd-rs"
 
-TOOLCHAIN_TARGET_TASK:append = " \
-	libstd-rs \
-"
